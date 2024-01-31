@@ -1,6 +1,7 @@
 return {
 	{
 		"hrsh7th/cmp-nvim-lsp",
+		event = { "BufReadPre", "BufNewFile" },
 		lazy = false,
 		config = true,
 	},
@@ -15,6 +16,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
+			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"onsails/lspkind.nvim",
 		},

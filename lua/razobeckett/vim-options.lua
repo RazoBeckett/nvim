@@ -1,8 +1,9 @@
 local o = vim.opt
 
-o.wrap = true                     -- line wrapping
+-- line wrapping
+o.wrap = false
 
--- line numbers 
+-- line numbers
 o.number = true
 o.relativenumber = true
 
@@ -32,4 +33,8 @@ o.clipboard:append("unnamedplus")
 o.splitright = true
 o.splitbelow = true
 
-o.iskeyword:append("-")           -- the dash(-) will be considered as part of the word
+-- misc.
+o.iskeyword:append("-") -- the dash(-) will be considered as part of the word
+o.undofile = true       -- undo persistence
+o.scrolloff = 8         -- scrolloff
+o.colorcolumn = "80"    -- color column

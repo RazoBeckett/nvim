@@ -1,4 +1,7 @@
 return {
-  "stevearc/dressing.nvim",
-  event = "VeryLazy",
+	"stevearc/dressing.nvim",
+	event = "VeryLazy",
+	config = function()
+		require("dressing").setup()
+	end,
 }

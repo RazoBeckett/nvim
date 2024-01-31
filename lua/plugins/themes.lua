@@ -3,39 +3,25 @@ return {
   priority = 1000,
   terminal_colors = true,
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  --{
-  --  "baliestri/aura-theme",
-  --  config = function(plugin)
-  --     vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-  --     vim.cmd([[colorscheme aura-dark]])
-  --  end,
-  --},
-  --
-  --{
-  --  "Mofiqul/dracula.nvim",
-  --  name = "dracula",
-  --  config = function()
-  --    --      vim.cmd.colorscheme("dracula")
-  --  end,
-  --},
-  --{
-  --  "ellisonleao/gruvbox.nvim",
-  --  config = function()
-  --    vim.o.background = "dark"
-  --    vim.cmd([[colorscheme gruvbox]])
-  --  end,
-  --},
-  --{
-  --  "rose-pine/neovim",
-  --  config = function()
-  --    vim.o.background = "dark"
-  --          vim.cmd([[colorscheme rose-pine]])
-  --  end,
-  --},
   {
     "catppuccin/nvim",
     config = function()
       vim.o.background = "dark"
+      require("catppuccin").setup({
+        integrations = {
+          harpoon = true,
+          cmp = true,
+          gitsigns = true,
+          treesitter = true,
+          treesitter_context = true,
+          mason = true,
+          native_lsp = { enabled = true },
+          neotree = true,
+          telescope = true,
+          notify = true,
+        },
+      })
+
       vim.cmd.colorscheme("catppuccin-macchiato")
     end,
   },
