@@ -13,6 +13,14 @@ return {
 		},
 	},
 	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("ibl").setup({
+        indent = { char = "" },
+      })
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
