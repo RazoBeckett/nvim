@@ -1,5 +1,9 @@
 local o = vim.opt
 
+--disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- line wrapping
 o.wrap = false
 
