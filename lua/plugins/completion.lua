@@ -36,7 +36,16 @@ return {
 					ghost_text = true,
 				},
 				formatting = {
-					format = require("lspkind").cmp_format(),
+					format = require("lspkind").cmp_format{
+            with_text = true,
+            menu = {
+              buffer = "[BUF]",
+              nvim_lsp = "[LSP]",
+              nvim_lua = "[LSP]",
+              luasnip = "[Snip]",
+              path = "[Path]",
+            },
+          },
 				},
 				completion = {
 					completeopt = "menu,menuone,preview,noselect",
