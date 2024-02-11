@@ -5,6 +5,9 @@ return {
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   {
     "catppuccin/nvim",
+    dependencies = {
+      "xiyaowong/transparent.nvim",
+    },
     config = function()
       vim.o.background = "dark"
       require("catppuccin").setup({

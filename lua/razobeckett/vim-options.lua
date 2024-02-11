@@ -41,4 +41,3 @@ o.splitbelow = true
 o.iskeyword:append("-") -- the dash(-) will be considered as part of the word
 o.undofile = true       -- undo persistence
 o.scrolloff = 8         -- scrolloff
-o.colorcolumn = "80"    -- color column

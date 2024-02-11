@@ -8,6 +8,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
+      require("telescope").setup({ defaults = { prompt_prefix = "   " } })
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
       vim.keymap.set("n", "<leader>sF", builtin.git_files, { desc = "[S]earch Git [F]iles" })
