@@ -7,6 +7,7 @@ return {
     "catppuccin/nvim",
     dependencies = {
       "xiyaowong/transparent.nvim",
+      "tjdevries/cyclist.vim",
     },
     config = function()
       vim.o.background = "dark"
