@@ -16,8 +16,8 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("ibl").setup({
-        indent = { char = "" },
-      })
+				indent = { char = "" },
+			})
 		end,
 	},
 	{
@@ -30,34 +30,31 @@ return {
 		},
 		config = function()
 			local cmp = require("cmp")
+			local luasnip = require("luasnip")
 			require("luasnip.loaders.from_vscode").lazy_load()
 			cmp.setup({
 				experimental = {
 					ghost_text = true,
 				},
 				formatting = {
-					format = require("lspkind").cmp_format{
-            with_text = true,
-            menu = {
-              buffer = "[BUF]",
-              nvim_lsp = "[LSP]",
-              nvim_lua = "[LSP]",
-              luasnip = "[Snip]",
-              path = "[Path]",
-            },
-          },
+					format = require("lspkind").cmp_format({
+						with_text = true,
+						menu = {
+							buffer = "[BUF]",
+							nvim_lsp = "[LSP]",
+							nvim_lua = "[LSP]",
+							luasnip = "[Snip]",
+							path = "[Path]",
+						},
+					}),
 				},
 				completion = {
 					completeopt = "menu,menuone,preview,noselect",
 				},
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						luasnip.lsp_expand(args.body)
 					end,
-				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -66,7 +63,17 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					["<C-l>"] = cmp.mapping(function()
+						if luasnip.expand_or_locally_jumpable() then
+							luasnip.expand_or_jump()
+						end
+					end, { "i", "s" }),
+					["<C-h>"] = cmp.mapping(function()
+						if luasnip.locally_jumpable(-1) then
+							luasnip.jump(-1)
+						end
+					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },

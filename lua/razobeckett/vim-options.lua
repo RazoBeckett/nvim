@@ -19,6 +19,7 @@ o.cursorline = true
 -- tab and indentation
 o.tabstop = 2
 o.shiftwidth = 2
+o.softtabstop = 0
 o.expandtab = true
 o.autoindent = true
 
