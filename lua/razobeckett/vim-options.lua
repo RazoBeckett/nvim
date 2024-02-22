@@ -1,9 +1,5 @@
 local o = vim.opt
 
---disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- line wrapping
 o.wrap = false
 
@@ -15,6 +11,8 @@ o.relativenumber = true
 o.ignorecase = true
 o.smartcase = true
 o.cursorline = true
+o.hlsearch = false
+o.incsearch = true
 
 -- tab and indentation
 o.tabstop = 2
@@ -42,3 +40,4 @@ o.splitbelow = true
 o.iskeyword:append("-") -- the dash(-) will be considered as part of the word
 o.undofile = true       -- undo persistence
 o.scrolloff = 8         -- scrolloff
+o.updatetime = 50       -- faster completion
