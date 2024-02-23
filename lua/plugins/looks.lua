@@ -4,10 +4,16 @@ return {
   terminal_colors = true,
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("dressing").setup()
+    end,
+  },
+  {
     "catppuccin/nvim",
     dependencies = {
       "xiyaowong/transparent.nvim",
-      "tjdevries/cyclist.vim",
     },
     config = function()
       vim.o.background = "dark"

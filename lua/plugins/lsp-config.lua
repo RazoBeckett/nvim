@@ -26,6 +26,7 @@ return {
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [d]efinition" })
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
       -- lsp mention
       lspconfig.lua_ls.setup({ capabilities = capabilities, filetype = { "lua" } })
       lspconfig.pyright.setup({ capabilities = capabilities, filetype = { "python" } })
