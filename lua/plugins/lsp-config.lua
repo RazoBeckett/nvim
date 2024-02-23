@@ -7,6 +7,9 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    opts = {
+      auto_install = true,
+    },
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "pylsp", "pyright" },
