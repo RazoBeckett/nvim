@@ -15,9 +15,9 @@ return {
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+      vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffer" })
       vim.keymap.set("n", "<leader>/", function()
         builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-          winblend = 10,
           previewer = false,
         }))
       end, { desc = "[/] Fuzzily search in current buffer" })
@@ -29,7 +29,6 @@ return {
         })
       end, { desc = "[S]earch [/] in Open Files" })
 
-      -- NOTE: This is a custom command to search in neovim config files
       vim.keymap.set("n", "<leader>sn", function()
         builtin.find_files({
           cwd = vim.fn.stdpath("config"),
