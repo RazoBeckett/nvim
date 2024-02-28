@@ -11,7 +11,7 @@ o.relativenumber = true
 o.ignorecase = true
 o.smartcase = true
 o.cursorline = true
-o.hlsearch = false
+o.hlsearch = true
 o.incsearch = true
 
 -- tab and indentation
@@ -40,8 +40,10 @@ o.splitbelow = true
 o.iskeyword:append("-") -- the dash(-) will be considered as part of the word
 o.undofile = true       -- undo persistence
 o.scrolloff = 8         -- scrolloff
-o.updatetime = 50       -- faster completion
+o.updatetime = 250      -- faster completion
+o.timeoutlen = 300
 
 -- show invisible characters
 o.list = true
-o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+

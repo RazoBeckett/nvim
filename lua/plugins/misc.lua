@@ -1,8 +1,8 @@
 return {
 	{ "tpope/vim-sleuth" },
-	{ "j-hui/fidget.nvim",        opts = {} },
-	{ "numToStr/Comment.nvim",    opts = {} },
-	{ "wakatime/vim-wakatime",    lazy = false },
+	{ "j-hui/fidget.nvim", opts = {} },
+	{ "numToStr/Comment.nvim", opts = {} },
+	{ "wakatime/vim-wakatime", lazy = false },
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
 	{
 		"echasnovski/mini.nvim",
