@@ -2,7 +2,6 @@ return {
   lazy = false,
   priority = 1000,
   terminal_colors = true,
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",

@@ -22,11 +22,10 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.formatting.prettier,
 					null_ls.builtins.formatting.black, -- python
 					null_ls.builtins.formatting.isort, -- python
+					null_ls.builtins.diagnostics.hadolint, -- docker
 					null_ls.builtins.diagnostics.mypy,
-					null_ls.builtins.diagnostics.shellcheck,
 					null_ls.builtins.formatting.shfmt,
 				},
 			})
