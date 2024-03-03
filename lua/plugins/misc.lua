@@ -1,9 +1,9 @@
 return {
 	{ "tpope/vim-sleuth" },
-	{ "j-hui/fidget.nvim", opts = {} },
-	{ "numToStr/Comment.nvim", opts = {} },
-	{ "wakatime/vim-wakatime", lazy = false },
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
+	{ "j-hui/fidget.nvim",        opts = {} },
+	{ "numToStr/Comment.nvim",    opts = {} },
+	{ "wakatime/vim-wakatime",    lazy = false },
+	{ "folke/todo-comments.nvim", event = 'VimEnter', dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
 	{
 		"echasnovski/mini.nvim",
 		config = function()
@@ -33,5 +33,16 @@ return {
 			vim.o.timeoutlen = 300
 		end,
 		opts = {},
+	},
+	{
+		'akinsho/bufferline.nvim',
+		version = "*",
+		dependencies = 'nvim-tree/nvim-web-devicons',
+		config = function()
+			require("bufferline").setup {}
+			for i = 1, 9 do
+				vim.keymap.set("n", "<leader>" .. i, "<cmd>BufferLineGoToBuffer " .. i .. "<CR>")
+			end
+		end
 	},
 }

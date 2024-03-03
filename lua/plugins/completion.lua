@@ -1,32 +1,20 @@
 return {
   {
-    "hrsh7th/cmp-nvim-lsp",
-    event = { "BufReadPre", "BufNewFile" },
-    lazy = false,
-    config = true,
-  },
-  {
-    "github/copilot.vim",
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets",
-    },
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("ibl").setup({
-        indent = { char = "" },
-      })
-    end,
-  },
-  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
+      {
+        "L3MON4D3/LuaSnip",
+        build = (function()
+          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+            return
+          end
+          return 'make install_jsregexp'
+        end)(),
+      },
+      "rafamadriz/friendly-snippets",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "onsails/lspkind.nvim",
@@ -51,9 +39,7 @@ return {
             },
           }),
         },
-        completion = {
-          completeopt = "menu,menuone,preview,noselect",
-        },
+        completion = { completeopt = "menu,menuone,preview,noselect" },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -86,5 +72,8 @@ return {
         }),
       })
     end,
+  },
+  {
+    "github/copilot.vim",
   },
 }

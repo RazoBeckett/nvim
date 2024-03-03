@@ -3,6 +3,11 @@ local o = vim.opt
 -- line wrapping
 o.wrap = false
 
+-- encoding
+vim.scriptencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+
 -- line numbers
 o.number = true
 o.relativenumber = true
@@ -47,3 +52,6 @@ o.timeoutlen = 300
 o.list = true
 o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])

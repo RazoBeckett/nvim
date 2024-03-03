@@ -24,7 +24,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local capabilities =
-				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+					require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 			local lspconfig = require("lspconfig")
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
@@ -40,7 +40,7 @@ return {
 			lspconfig.lua_ls.setup({ capabilities = capabilities, filetype = { "lua" } })
 			lspconfig.pyright.setup({ capabilities = capabilities, filetype = { "python" } })
 			lspconfig.bashls.setup({ capabilities = capabilities, filetype = { "sh", "bash" } })
-			lspconfig.docker_compose_language_service.setup({ capabilities = capabilities , filetype = { "yml", "yaml" } })
+			lspconfig.docker_compose_language_service.setup({ capabilities = capabilities, filetype = { "yml", "yaml" } })
 			lspconfig.clangd.setup({ capabilities = capabilities })
 			lspconfig.dockerls.setup({ capabilities = capabilities, filetype = { "dockerfile" } })
 			lspconfig.ast_grep.setup({ capabilities = capabilities })
