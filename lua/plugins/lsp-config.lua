@@ -32,10 +32,12 @@ return {
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 			vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { desc = "[G]oto [T]ype Definition" })
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "[G]oto [I]mplementation" })
+			vim.keymap.set("n", '<leader>D', require('telescope.builtin').lsp_type_definitions, { desc = 'Type [D]efinition' })
+			vim.keymap.set("n", '<leader>ds', require('telescope.builtin').lsp_document_symbols,
+				{ desc = '[D]ocument [S]ymbols' })
+			vim.keymap.set("n", '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+				{ desc = '[W]orkspace [S]ymbols' })
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-			-- diagnostics
-			-- vim.keymap.set("n", "<leader>d[", vim.lsp.diagnostic.goto_prev, { desc = "Show Line Diagnostics" })
-			-- vim.keymap.set("n", "<leader>d]", vim.lsp.diagnostic.goto_next, { desc = "Show Line Diagnostics" })
 			-- lsp mention
 			lspconfig.lua_ls.setup({ capabilities = capabilities, filetype = { "lua" } })
 			lspconfig.pyright.setup({ capabilities = capabilities, filetype = { "python" } })

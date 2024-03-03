@@ -1,6 +1,5 @@
 return {
 	{ "tpope/vim-sleuth" },
-	{ "j-hui/fidget.nvim",        opts = {} },
 	{ "numToStr/Comment.nvim",    opts = {} },
 	{ "wakatime/vim-wakatime",    lazy = false },
 	{ "folke/todo-comments.nvim", event = 'VimEnter', dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
@@ -12,17 +11,6 @@ return {
 			local statusline = require("mini.statusline")
 			statusline.setup()
 			statusline.section_location = function() return "" end
-		end,
-	},
-	{
-		"MarcHamamji/runner.nvim",
-		config = function()
-			require("runner").setup({
-				position = "right",
-				width = 75,
-				height = 10,
-			})
-			vim.keymap.set("n", "<F5>", require("runner").run)
 		end,
 	},
 	{
