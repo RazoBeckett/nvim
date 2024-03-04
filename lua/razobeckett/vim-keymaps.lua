@@ -14,3 +14,6 @@ k("x", "<leader>p", '"_dP', { silent = true, desc = "Paste without yanking" })
 k("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move line up" })
 k("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move line down" })
 k("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Set Execution Permission" })
+
+-- borrowed from kickstart.nvim @tjdevries
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
