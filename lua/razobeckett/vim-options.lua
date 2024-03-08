@@ -8,6 +8,14 @@ vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
+-- show invisible characters
+o.list = true
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
 -- line numbers
 o.number = true
 o.relativenumber = true
@@ -23,8 +31,10 @@ o.incsearch = true
 o.tabstop = 2
 o.shiftwidth = 2
 o.softtabstop = 0
+o.smarttab = true
 o.expandtab = true
 o.autoindent = true
+o.breakindent = true
 
 -- appearance
 o.termguicolors = true
@@ -48,10 +58,7 @@ o.scrolloff = 8         -- scrolloff
 o.updatetime = 250      -- faster completion
 o.timeoutlen = 300
 
--- show invisible characters
-o.list = true
-o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- disable statusline
+o.laststatus = 0
+o.showmode = false
+o.ruler = false

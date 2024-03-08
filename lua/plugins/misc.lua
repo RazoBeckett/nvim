@@ -2,6 +2,7 @@ return {
 	{ "tpope/vim-sleuth" },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{ "wakatime/vim-wakatime", lazy = false },
+	{ "echasnovski/mini.hipatterns", event = "BufReadPre", opts = {} },
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -13,11 +14,6 @@ return {
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.surround").setup()
-			local statusline = require("mini.statusline")
-			statusline.setup()
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
 		end,
 	},
 	{

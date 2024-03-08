@@ -4,9 +4,10 @@ vim.g.maplocalleader = " "
 local k = vim.keymap.set
 
 k("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights" })
-k("n", "-", ":Ex<CR>", { desc = "Open file explorer" })
 k("n", "<leader><F5>", "<cmd>!python %<CR>", { silent = true, desc = "Run Python" })
 k("n", "<leader><F6>", ":e %:h", { desc = "Create New file" })
+k("n", "+", "<C-a>", { silent = true, desc = "Increment number" })
+k("n", "-", "<C-x>", { silent = true, desc = "Decrement number" })
 
 -- borrowed from theprimeagen
 k("n", "J", "mzJ`z", { silent = true, desc = "Join lines and keep cursor position" })
