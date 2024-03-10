@@ -2,10 +2,24 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
+		"williamboman/mason.nvim",
+		opts = {
+			ensure_installed = {
+				"lua_ls",
+				"pyright",
+				"bashls",
+				"docker_compose_language_service",
+				"clangd",
+				"dockerls",
+				"html",
+				"tsserver",
+				"cssls",
+				"intelephense",
+			},
+		},
 	},
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
