@@ -1,7 +1,7 @@
 return {
 	{ "tpope/vim-sleuth" },
-	{ "numToStr/Comment.nvim", opts = {} },
-	{ "wakatime/vim-wakatime", lazy = false },
+	{ "numToStr/Comment.nvim",       opts = {} },
+	{ "wakatime/vim-wakatime",       lazy = false },
 	{ "echasnovski/mini.hipatterns", event = "BufReadPre", opts = {} },
 	{
 		"folke/todo-comments.nvim",
@@ -34,6 +34,12 @@ return {
 			for i = 1, 9 do
 				vim.keymap.set("n", "<leader>" .. i, "<cmd>BufferLineGoToBuffer " .. i .. "<CR>")
 			end
+		end,
+	},
+	{
+		"mbbill/undotree",
+		config = function()
+			vim.keymap.set("n", "<leader>ut", "<cmd>UndotreeToggle<CR>")
 		end,
 	},
 }
