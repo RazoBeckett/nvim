@@ -30,11 +30,18 @@ return {
 		pcall(require("telescope").load_extension, "fzf")
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-		vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "[S]earch Git [F]iles" })
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffer" })
+
+		vim.keymap.set("n", "<C-p>", function()
+			local success = pcall(builtin.git_files)
+			if not success then
+				builtin.find_files()
+			end
+		end, { desc = "[S]earch Git [F]iles" })
+
 		vim.keymap.set("n", "<leader>/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				previewer = false,
