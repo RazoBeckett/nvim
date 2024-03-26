@@ -53,9 +53,9 @@ o.splitbelow = true
 
 -- misc.
 o.iskeyword:append("-") -- the dash(-) will be considered as part of the word
-o.undofile = true       -- undo persistence
-o.scrolloff = 8         -- scrolloff
-o.updatetime = 250      -- faster completion
+o.undofile = true -- undo persistence
+o.scrolloff = 8 -- scrolloff
+o.updatetime = 250 -- faster completion
 o.timeoutlen = 300
 
 -- disable statusline

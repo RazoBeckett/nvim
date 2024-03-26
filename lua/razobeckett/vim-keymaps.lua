@@ -17,4 +17,5 @@ k("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move line down" })
 k("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Set Execution Permission" })
 
 -- borrowed from kickstart.nvim @tjdevries
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+k("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+k("n", "ff", ":e %:h/<C-d>", { desc = "Open file in current directory" })
