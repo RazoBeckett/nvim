@@ -8,13 +8,13 @@ return {
 		config = function()
 			require("gitsigns").setup({
 				signs = {
-					add = { text = "+" },
-					change = { text = "~" },
+					add = { text = "▎" },
+					change = { text = "▎" },
 					delete = { text = "_" },
 					topdelete = { text = "‾" },
-					changedelete = { text = "~" },
-					untracked = { text = "│" },
+					changedelete = { text = "▎" },
 				},
+				yadm = { enable = true },
 			})
 			vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "[G]it [P]review Hunk" })
 			vim.keymap.set(

@@ -11,7 +11,7 @@ return {
 		require("telescope").setup({
 			defaults = {
 				preview = false,
-				prompt_prefix = "   ",
+				prompt_prefix = " 󰈞 ",
 				layout_strategy = "horizontal",
 				sorting_strategy = "ascending",
 				layout_config = {
