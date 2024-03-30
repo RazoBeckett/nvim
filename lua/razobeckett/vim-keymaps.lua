@@ -18,4 +18,3 @@ k("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Set Executi
 
 -- borrowed from kickstart.nvim @tjdevries
 k("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-k("n", "ff", ":e %:h/<C-d>", { desc = "Open file in current directory" })

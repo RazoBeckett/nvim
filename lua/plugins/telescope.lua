@@ -10,14 +10,15 @@ return {
 	config = function()
 		require("telescope").setup({
 			defaults = {
-				preview = false,
+				-- preview = false,
 				prompt_prefix = " 󰈞 ",
 				layout_strategy = "horizontal",
 				sorting_strategy = "ascending",
 				layout_config = {
 					prompt_position = "top",
-					height = 0.8,
-					width = 0.5,
+					height = 0.7,
+					width = 0.6,
+					preview_width = 0.6,
 				},
 			},
 			extensions = {

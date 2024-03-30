@@ -1,7 +1,7 @@
 return {
 	{ "tpope/vim-sleuth" },
-	{ "numToStr/Comment.nvim",       opts = {} },
-	{ "wakatime/vim-wakatime",       lazy = false },
+	{ "numToStr/Comment.nvim", opts = {} },
+	{ "wakatime/vim-wakatime", lazy = false },
 	{ "echasnovski/mini.hipatterns", event = "BufReadPre", opts = {} },
 	{
 		"folke/todo-comments.nvim",
