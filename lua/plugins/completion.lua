@@ -29,6 +29,8 @@ return {
 				},
 				formatting = {
 					format = require("lspkind").cmp_format({
+						maxwidth = 50,
+						ellipsis_char = "󰇘",
 						with_text = true,
 						menu = {
 							buffer = "[BUF]",

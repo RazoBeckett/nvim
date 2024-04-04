@@ -9,6 +9,12 @@ k("n", "<leader><F6>", ":e %:h", { desc = "Create New file" })
 k("n", "+", "<C-a>", { silent = true, desc = "Increment number" })
 k("n", "-", "<C-x>", { silent = true, desc = "Decrement number" })
 
+-- borrowed from Josean Martinez
+k("n", "<leader>Sv", "<C-w>v", { desc = "Split window vertically" })
+k("n", "<leader>Sh", "<C-w>s", { desc = "Split window horizontally" })
+k("n", "<leader>Se", "<C-w>=", { desc = "Make split equal" })
+k("n", "<leader>Sx", "<cmd>close<CR>", { desc = "Close current split" })
+
 -- borrowed from theprimeagen
 k("n", "J", "mzJ`z", { silent = true, desc = "Join lines and keep cursor position" })
 k("x", "<leader>p", '"_dP', { silent = true, desc = "Paste without yanking" })

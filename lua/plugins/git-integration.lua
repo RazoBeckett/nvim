@@ -1,7 +1,5 @@
 return {
-	{
-		"tpope/vim-fugitive",
-	},
+	{ "tpope/vim-fugitive" },
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
@@ -24,5 +22,21 @@ return {
 				{ desc = "[G]it [T]oggle Line Blame" }
 			)
 		end,
+	},
+	{
+		"kdheepak/lazygit.nvim",
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{ "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Open [L]azy[G]it" } },
+		},
 	},
 }

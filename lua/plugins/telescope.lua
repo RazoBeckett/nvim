@@ -6,19 +6,28 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-telescope/telescope-ui-select.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"folke/todo-comments.nvim",
 	},
 	config = function()
+		local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
-				-- preview = false,
+				path_display = { "smart" },
+				mappings = {
+					i = {
+						["<C-k>"] = actions.move_selection_previous,
+						["<C-j>"] = actions.move_selection_next,
+						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+					},
+				},
+				preview = false,
 				prompt_prefix = " 󰈞 ",
 				layout_strategy = "horizontal",
 				sorting_strategy = "ascending",
 				layout_config = {
 					prompt_position = "top",
-					height = 0.7,
-					width = 0.6,
-					preview_width = 0.6,
+					height = 0.6,
+					width = 0.4,
 				},
 			},
 			extensions = {
@@ -35,6 +44,7 @@ return {
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffer" })
+		vim.keymap.set("n", "<leader>st", "<cmd>TodoTelescope<CR>", { desc = "[S]earch [T]odo Tags" })
 
 		vim.keymap.set("n", "<C-p>", function()
 			local success = pcall(builtin.git_files)

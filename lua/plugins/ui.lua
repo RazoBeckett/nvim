@@ -1,6 +1,5 @@
 return {
 	lazy = false,
-	priority = 1000,
 	terminal_colors = true,
 	{
 		"stevearc/dressing.nvim",
@@ -11,6 +10,7 @@ return {
 	},
 	{
 		"catppuccin/nvim",
+		priority = 1000,
 		dependencies = {
 			"xiyaowong/transparent.nvim",
 		},
@@ -58,7 +58,7 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			indent = {
 				char = "│",
