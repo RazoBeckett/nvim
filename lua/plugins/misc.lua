@@ -1,6 +1,6 @@
 return {
-	{ "tpope/vim-sleuth" },
 	{ "wakatime/vim-wakatime", lazy = false },
+	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
 	{ "echasnovski/mini.hipatterns", event = { "BufReadPre", "BufNewFile" }, opts = {} },
 	{ "numToStr/Comment.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
 	{
@@ -44,9 +44,10 @@ return {
 	},
 	{
 		"mbbill/undotree",
-		config = function()
-			vim.keymap.set("n", "<leader>ut", "<cmd>UndotreeToggle<CR>")
-		end,
+		cmd = { "UndotreeToggle", "UndotreeShow" },
+		keys = {
+			{ "<leader>ut", "<cmd>UndotreeToggle<CR>", desc = "Toggle UndoTree" },
+		},
 	},
 	{
 		"iamcco/markdown-preview.nvim",
@@ -56,16 +57,5 @@ return {
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
-	},
-	{
-		"rmagatti/auto-session",
-		config = function()
-			require("auto-session").setup({
-				auto_restore_enabled = false,
-				auto_session_suppress_dirs = { "~/", "/tmp", "/var/tmp", "~/Downloads", "~/Desktop", "~/Documents" },
-				vim.keymap.set("n", "<leader>Ws", "<cmd>SessionSave<CR>"),
-				vim.keymap.set("n", "<leader>Wr", "<cmd>SessionRestore<CR>"),
-			})
-		end,
 	},
 }
