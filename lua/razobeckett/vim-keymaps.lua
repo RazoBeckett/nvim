@@ -10,6 +10,7 @@ vim.g.netrw_liststyle = 3 -- netrw list style
 -- keympas
 local k = vim.keymap.set
 
+k("i", "jk", "<Esc>", { silent = true, desc = "jk to escape" })
 k("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights" })
 k("n", "<leader><F5>", "<cmd>!python %<CR>", { silent = true, desc = "Run Python" })
 k("n", "<leader><F6>", ":e %:h", { desc = "Create New file" })
@@ -30,7 +31,7 @@ k("n", "J", "mzJ`z", { silent = true, desc = "Join lines and keep cursor positio
 k("x", "<leader>p", '"_dP', { silent = true, desc = "Paste without yanking" })
 k("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move line up" })
 k("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move line down" })
-k("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Set Execution Permission" })
+k("n", "<leader>x!", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Set Execution Permission" })
 k("n", "<C-u>", "<C-u>zz", { silent = true, desc = "Scroll up" })
 k("n", "<C-d>", "<C-d>zz", { silent = true, desc = "Scroll down" })
 
