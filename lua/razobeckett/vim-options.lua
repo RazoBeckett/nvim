@@ -42,6 +42,8 @@ local options = {
 	laststatus = 0,
 	showmode = false,
 	ruler = false,
+	-- disable swap file
+	swapfile = false,
 }
 
 -- encoding
