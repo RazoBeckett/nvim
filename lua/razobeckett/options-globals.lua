@@ -1,3 +1,23 @@
+-- global options --
+local globals = {
+	-- leader and local leader
+	mapleader = " ",
+	maplocalleader = " ",
+	-- disable netrw
+	loaded_netrwPlugin = 1,
+	loaded_netrw = 1,
+	netrw_banner = 0,
+	netrw_liststyle = 3,
+}
+
+for global, value in pairs(globals) do
+	vim.g[global] = value
+end
+
+-- vim options --
+vim.scriptencoding = "utf-8" -- set the encoding of the script
+vim.opt.clipboard:append("unnamedplus") -- use the system clipboard
+vim.opt.iskeyword:append("-") -- the dash(-) will be considered as part of the word
 local options = {
 	-- line wrapping
 	wrap = false,
@@ -45,17 +65,6 @@ local options = {
 	-- disable swap file
 	swapfile = false,
 }
-
--- encoding
-vim.scriptencoding = "utf-8"
-
---clipboard
-vim.opt.clipboard:append("unnamedplus")
-vim.opt.iskeyword:append("-") -- the dash(-) will be considered as part of the word
-
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 for opt, value in pairs(options) do
 	vim.opt[opt] = value

@@ -1,5 +1,5 @@
-require("razobeckett.vim-keymaps")
-require("razobeckett.vim-options")
+require("razobeckett.keymaps")
+require("razobeckett.options-globals")
 require("razobeckett.lazy")
 
 vim.cmd.hi("Comment cterm=italic gui=italic")
