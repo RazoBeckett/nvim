@@ -15,9 +15,6 @@ k("n", "<leader><F5>", "<cmd>!python %<CR>", "Run Python", true)
 k("n", "<leader><F6>", ":e %:h", "Create New file")
 k("n", "+", "<C-a>", "Increment number", true)
 k("n", "-", "<C-x>", "Decrement number", true)
-k("n", "<leader>e", function()
-	require("oil").toggle_float()
-end, "Open Oil Float")
 
 -- borrowed from Josean Martinez
 k("n", "<leader>Sv", "<C-w>v", "Split window vertically")
