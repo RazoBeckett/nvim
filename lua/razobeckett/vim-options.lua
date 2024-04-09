@@ -6,7 +6,7 @@ local options = {
 	fileencoding = "utf-8",
 	-- show invisible characters
 	list = true,
-	listchars = { tab = "» ", trail = "·", nbsp = "␣" },
+	listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" },
 	-- line numbers
 	number = true,
 	relativenumber = true,

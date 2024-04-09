@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {

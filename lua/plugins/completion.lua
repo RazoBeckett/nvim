@@ -27,6 +27,7 @@ return {
 				experimental = {
 					ghost_text = true,
 				},
+				---@diagnostic disable-next-line: missing-fields
 				formatting = {
 					format = require("lspkind").cmp_format({
 						maxwidth = 50,

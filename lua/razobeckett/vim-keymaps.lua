@@ -10,6 +10,8 @@ vim.g.netrw_liststyle = 3 -- netrw list style
 -- keympas
 local k = vim.keymap.set
 
+k("n", "H", "^", { silent = true, desc = "Go to BOL" })
+k("n", "L", "$", { silent = true, desc = "Go to EOL" })
 k("i", "jk", "<Esc>", { silent = true, desc = "jk to escape" })
 k("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights" })
 k("n", "<leader><F5>", "<cmd>!python %<CR>", { silent = true, desc = "Run Python" })

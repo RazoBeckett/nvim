@@ -20,14 +20,15 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
-				preview = false,
+				preview = true,
 				prompt_prefix = " 󰈞 ",
 				layout_strategy = "horizontal",
 				sorting_strategy = "ascending",
 				layout_config = {
 					prompt_position = "top",
-					height = 0.6,
-					width = 0.4,
+					preview_width = 0.6,
+					height = 0.7,
+					width = 0.7,
 				},
 			},
 			extensions = {
