@@ -13,6 +13,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("oil").setup({
+				default_file_explorer = true,
 				use_default_keymaps = false,
 				keymaps = {
 					["g?"] = "actions.show_help",

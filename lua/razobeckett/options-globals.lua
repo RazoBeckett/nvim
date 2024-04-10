@@ -64,6 +64,8 @@ local options = {
 	ruler = false,
 	-- disable swap file
 	swapfile = false,
+	-- set conceallevel
+	conceallevel = 2,
 }
 
 for opt, value in pairs(options) do
