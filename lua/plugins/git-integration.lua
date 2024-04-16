@@ -14,11 +14,11 @@ return {
 				},
 				yadm = { enable = true },
 			})
-			vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "[G]it [P]review Hunk" })
+			vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "[G]it [P]review Hunk" })
 			vim.keymap.set(
 				"n",
 				"<leader>gt",
-				":Gitsigns toggle_current_line_blame<CR>",
+				"<cmd>Gitsigns toggle_current_line_blame<CR>",
 				{ desc = "[G]it [T]oggle Line Blame" }
 			)
 		end,

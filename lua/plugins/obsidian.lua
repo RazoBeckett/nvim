@@ -6,12 +6,14 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
-	opts = {
-		workspaces = {
-			{
-				name = "Notes",
-				path = "~/Documents/Notes",
+	config = function()
+		require("obsidian").setup({
+			workspaces = {
+				{
+					name = "Notes",
+					path = "~/Documents/Notes",
+				},
 			},
-		},
-	},
+		})
+	end,
 }

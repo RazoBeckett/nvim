@@ -3,9 +3,15 @@ return {
 	tag = "0.1.5",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons",
+		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		"nvim-telescope/telescope-ui-select.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			cond = function()
+				return vim.fn.executable("make") == 1
+			end,
+		},
 		"folke/todo-comments.nvim",
 	},
 	config = function()
@@ -49,8 +55,7 @@ return {
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 
 		vim.keymap.set("n", "<C-p>", function()
-			local success = pcall(builtin.git_files)
-			if not success then
+			if not pcall(builtin.git_files) then
 				builtin.find_files()
 			end
 		end, { desc = "[S]earch Git [F]iles" })
@@ -69,9 +74,7 @@ return {
 		end, { desc = "[S]earch [/] in Open Files" })
 
 		vim.keymap.set("n", "<leader>sn", function()
-			builtin.find_files({
-				cwd = vim.fn.stdpath("config"),
-			})
+			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[S]earch [N]eovim files" })
 	end,
 }

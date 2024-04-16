@@ -1,7 +1,6 @@
 return {
 	{ "wakatime/vim-wakatime", lazy = false },
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
-	{ "echasnovski/mini.hipatterns", event = { "BufReadPre", "BufNewFile" }, opts = {} },
 	{ "numToStr/Comment.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
 	{
 		"folke/todo-comments.nvim",
@@ -17,15 +16,6 @@ return {
 		end,
 	},
 	{
-		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-		opts = {},
-	},
-	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -38,7 +28,7 @@ return {
 		config = function()
 			require("bufferline").setup({})
 			for i = 1, 9 do
-				vim.keymap.set("n", "<leader>" .. i, "<cmd>BufferLineGoToBuffer " .. i .. "<CR>")
+				vim.keymap.set("n", "<leader>" .. i, string.format("<cmd>BufferLineGoToBuffer %s <CR>", i))
 			end
 		end,
 	},
@@ -46,7 +36,7 @@ return {
 		"mbbill/undotree",
 		cmd = { "UndotreeToggle", "UndotreeShow" },
 		keys = {
-			{ "<leader>ut", "<cmd>UndotreeToggle<CR>", desc = "Toggle UndoTree" },
+			{ "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "Toggle UndoTree" },
 		},
 	},
 	{

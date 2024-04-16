@@ -54,6 +54,22 @@ return {
 					},
 				})
 			end,
+			["ansiblels"] = function()
+				lspconfig["ansiblels"].setup({
+					cmd = { "ansible-language-server", "--stdio" },
+					filetypes = { "yaml", "ansible" },
+					init_options = {
+						extraVars = {
+							ansible = {
+								ansible = "ansible",
+								ansiblePlaybook = "ansible-playbook",
+								ansibleGalaxy = "ansible-galaxy",
+								ansibleLint = "ansible-lint",
+							},
+						},
+					},
+				})
+			end,
 		})
 	end,
 }
