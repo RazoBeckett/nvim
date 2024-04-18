@@ -11,3 +11,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		end
 	end,
 })
+
+-- send <C-p> to open up telescope at startup
+vim.cmd("autocmd VimEnter * lua require('telescope.builtin').find_files()")

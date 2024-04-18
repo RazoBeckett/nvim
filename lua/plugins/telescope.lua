@@ -26,15 +26,11 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
-				preview = true,
 				prompt_prefix = " 󰈞 ",
-				layout_strategy = "horizontal",
+				layout_strategy = "center",
 				sorting_strategy = "ascending",
 				layout_config = {
 					prompt_position = "top",
-					preview_width = 0.6,
-					height = 0.7,
-					width = 0.7,
 				},
 			},
 			extensions = {
@@ -73,8 +69,12 @@ return {
 			})
 		end, { desc = "[S]earch [/] in Open Files" })
 
-		vim.keymap.set("n", "<leader>sn", function()
+		vim.keymap.set("n", "<leader>sv", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "[S]earch [N]eovim files" })
+		end, { desc = "[S]earch Neo[v]im files" })
+
+		vim.keymap.set("n", "<leader>sn", function()
+			builtin.find_files({ cwd = "~/Documents/Notes/" })
+		end, { desc = "[S]earch [N]otes" })
 	end,
 }
