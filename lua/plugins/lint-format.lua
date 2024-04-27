@@ -36,7 +36,7 @@ return {
 					-- diagnostics
 					null_ls.builtins.diagnostics.phpcs,
 					null_ls.builtins.diagnostics.mypy,
-					null_ls.builtins.diagnostics.stylelint,
+					-- null_ls.builtins.diagnostics.stylelint,
 				},
 			})
 			vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "[G]et [F]ormat" })
