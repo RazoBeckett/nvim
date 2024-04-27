@@ -9,12 +9,12 @@ return {
 		{ "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>",          desc = "Go to previous harpoon mark" },
 		{ "<leader>he", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "Toggle the harpoon quick menu" },
 	},
-	-- config = function()
-	-- 	for i = 1, 5 do
-	-- 		vim.api.nvim_set_keymap("n", string.format("<leader>%s", i),
-	-- 			string.format(":lua require('harpoon.ui').nav_file(%d)<CR>", i),
-	-- 			{ desc = string.format("File(%s)", i), noremap = true, silent = true }
-	-- 		)
-	-- 	end
-	-- end,
+	config = function()
+		for i = 1, 5 do
+			vim.api.nvim_set_keymap("n", string.format("<leader>h%s", i),
+				string.format(":lua require('harpoon.ui').nav_file(%d)<CR>", i),
+				{ desc = string.format("Harpoon File(%s)", i), noremap = true, silent = true }
+			)
+		end
+	end,
 }
