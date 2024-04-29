@@ -1,6 +1,6 @@
 ---@diagnostic disable: missing-fields
 return {
-	"mfussenegger/nvim-dap",
+	--[[ "mfussenegger/nvim-dap",
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
@@ -38,5 +38,5 @@ return {
 		end
 		vim.keymap.set("n", "<Leader>dt", dap.set_breakpoint, { desc = "[D]ebug [T]oggle breakpoint" })
 		vim.keymap.set("n", "<Leader>dc", dap.continue, { desc = "[D]ebug [C]ontinue" })
-	end,
+	end, ]]
 }

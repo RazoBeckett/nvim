@@ -11,6 +11,7 @@ return {
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
+		local util = require("lspconfig/util")
 		local mason_lspconfig = require("mason-lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -32,7 +33,9 @@ return {
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 			end,
 		})
-		local capabilities = cmp_nvim_lsp.default_capabilities() --vim.lsp.protocol.make_client_capabilities()
+		-- local capabilities = cmp_nvim_lsp.default_capabilities() --vim.lsp.protocol.make_client_capabilities()
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 		for type, icon in pairs(signs) do
@@ -68,6 +71,13 @@ return {
 							},
 						},
 					},
+				})
+			end,
+			["gopls"] = function()
+				lspconfig["gopls"].setup({
+					cmd = { "gopls" },
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 				})
 			end,
 		})
