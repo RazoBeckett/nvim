@@ -2,6 +2,7 @@ return {
 	{ "wakatime/vim-wakatime", lazy = false },
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
 	{ "numToStr/Comment.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
+	{ "lambdalisue/vim-suda" },
 	{
 		"folke/todo-comments.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -13,11 +14,14 @@ return {
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.surround").setup()
+			require("mini.files").setup()
+			vim.keymap.set("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>", { silent = true, desc = "Open file explorer" })
 		end,
 	},
 	{
 		"akinsho/bufferline.nvim",
-		version = "*",
+		-- version = "*",
+		branch = "main",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		opts = {
 			options = {

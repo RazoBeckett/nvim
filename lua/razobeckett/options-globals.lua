@@ -18,6 +18,7 @@ end
 vim.scriptencoding = "utf-8" -- set the encoding of the script
 vim.opt.clipboard:append("unnamedplus") -- use the system clipboard
 vim.opt.iskeyword:append("-") -- the dash(-) will be considered as part of the word
+vim.opt.path:append("**") -- search for files in the current directory and its subdirectories
 local options = {
 	-- line wrapping
 	wrap = false,
@@ -49,7 +50,7 @@ local options = {
 	background = "dark",
 	signcolumn = "yes",
 	--backspace key
-	backspace = "indent,eol,start",
+	backspace = { "indent", "eol", "start" },
 	--slip window
 	splitright = true,
 	splitbelow = true,

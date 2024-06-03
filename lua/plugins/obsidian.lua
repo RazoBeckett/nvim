@@ -14,6 +14,9 @@ return {
 					path = "~/Documents/Notes",
 				},
 			},
+			picker = {
+				name = "telescope.nvim",
+			},
 		})
 	end,
 }

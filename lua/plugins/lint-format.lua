@@ -15,7 +15,7 @@ return {
 				highlight = { enable = true },
 				indent = { enable = true },
 				autotag = { enable = true },
-				ensure_installed = { "c", "dockerfile", "python", "javascript", "java", "yaml", "bash" },
+				ensure_installed = { "c", "python", "javascript", "java", "yaml", "bash" },
 			})
 		end,
 	},
