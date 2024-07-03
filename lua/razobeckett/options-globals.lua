@@ -40,7 +40,7 @@ local options = {
 	--tab and indentation
 	tabstop = 2,
 	shiftwidth = 2,
-	softtabstop = 0,
+	softtabstop = 2,
 	smarttab = true,
 	expandtab = true,
 	autoindent = true,

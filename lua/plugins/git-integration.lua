@@ -14,7 +14,6 @@ return {
 							topdelete = { text = "‾" },
 							changedelete = { text = "▎" },
 						},
-						yadm = { enable = true },
 					})
 					vim.keymap.set(
 						"n",

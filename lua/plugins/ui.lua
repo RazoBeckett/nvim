@@ -8,110 +8,20 @@ return {
 			require("dressing").setup()
 		end,
 	},
-	--[[ {
-		"catppuccin/nvim",
-		priority = 1000,
-		dependencies = {
-			"xiyaowong/transparent.nvim",
-		},
-		opts = {
-			integrations = {
-				aerial = true,
-				alpha = true,
-				cmp = true,
-				dashboard = true,
-				flash = true,
-				gitsigns = true,
-				headlines = true,
-				illuminate = true,
-				indent_blankline = { enabled = true },
-				leap = true,
-				lsp_trouble = true,
-				mason = true,
-				markdown = true,
-				mini = true,
-				native_lsp = {
-					enabled = true,
-					underlines = {
-						errors = { "undercurl" },
-						hints = { "undercurl" },
-						warnings = { "undercurl" },
-						information = { "undercurl" },
-					},
-				},
-				navic = { enabled = true, custom_bg = "lualine" },
-				neotest = true,
-				neotree = true,
-				noice = true,
-				notify = true,
-				semantic_tokens = true,
-				telescope = true,
-				treesitter = true,
-				treesitter_context = true,
-				which_key = true,
-			},
-		},
-		config = function()
-			vim.o.background = "dark"
-			vim.cmd.colorscheme("catppuccin-macchiato")
-		end,
-	}, ]]
-	--
 	{
-		"tjdevries/colorbuddy.nvim",
+		"RRethy/nvim-base16",
 		priority = 1000,
 		dependencies = {
 			"xiyaowong/transparent.nvim",
 		},
-		config = function()
-			require("colorbuddy").colorscheme("uwunicorn")
-
-			local colorbuddy = require("colorbuddy")
-			local Color = colorbuddy.Color
-			local Group = colorbuddy.Group
-			local c = colorbuddy.colors
-			local g = colorbuddy.groups
-			local s = colorbuddy.styles
-
-			-- Define your new colors based on the provided hex codes
-			Color.new("white", "#eed5d9")
-			Color.new("red", "#de5b44")
-			Color.new("pink", "#e39755") -- Adjusted for visibility
-			Color.new("green", "#6ac38f")
-			Color.new("yellow", "#e39755")
-			Color.new("blue", "#6a9eb5")
-			Color.new("aqua", "#9c5fce") -- Adjusted for visibility
-			Color.new("cyan", "#9c5fce")
-			Color.new("purple", "#c965bf")
-			Color.new("violet", "#6a9eb5") -- Adjusted for visibility
-			Color.new("orange", "#de5b44") -- Adjusted for visibility
-			Color.new("brown", "#46354a") -- Adjusted for visibility
-
-			Color.new("seagreen", "#6ac38f") -- Adjusted for visibility
-			Color.new("turquoise", "#9c5fce") -- Adjusted for visibility
-
-			-- Adjust background color for better visibility of other elements
-			local background_string = "#241b26"
-			Color.new("background", background_string)
-			Color.new("gray0", background_string)
-
-			-- Define groups with the new colors
-			Group.new("Normal", c.white, c.background)
-
-			Group.new("@constant", c.orange, nil, s.none)
-			Group.new("@function", c.yellow, nil, s.none)
-			Group.new("@function.bracket", g.Normal, g.Normal)
-			Group.new("@keyword", c.purple, nil, s.none)
-			Group.new("@keyword.faded", g.nontext.fg:light(), nil, s.none)
-			Group.new("@property", c.blue)
-			Group.new("@variable", c.white, nil)
-			Group.new("@variable.builtin", c.purple:light():light(), g.Normal)
-
-			-- Lua function calls adjusted to a shade of blue
-			Group.new("@function.call.lua", c.blue:dark(), nil, nil)
-
-			vim.o.background = "dark"
-		end,
+		config = function ()
+			require("base16-colorscheme").setup({
+				base00= '#242b26', base01= '#2f2a3f', base02= '#46354a', base03= '#6c3c62',
+				base04= '#7e5f83', base05= '#eed5d9', base06= '#d9c2c6', base07= '#e4ccd0',
+				base08= '#de5b44', base09= '#e39755', base0A= '#a84a73', base0B= '#c965bf',
+				base0C= '#9c5fce', base0D= '#6a9eb5', base0E= '#6ac38f', base0F= '#a3ab5a',
+			})
+		end
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
