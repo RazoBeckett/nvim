@@ -60,7 +60,7 @@ local options = {
 	updatetime = 250, -- faster completion
 	timeoutlen = 300, -- faster timeout
 	-- disable statusline
-	laststatus = 0,
+	-- laststatus = 0,
 	showmode = false,
 	ruler = false,
 	-- disable swap file
