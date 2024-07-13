@@ -14,14 +14,30 @@ return {
 		dependencies = {
 			"xiyaowong/transparent.nvim",
 		},
-		config = function ()
-			require("base16-colorscheme").setup({
-				base00= '#242b26', base01= '#2f2a3f', base02= '#46354a', base03= '#6c3c62',
-				base04= '#7e5f83', base05= '#eed5d9', base06= '#d9c2c6', base07= '#e4ccd0',
-				base08= '#de5b44', base09= '#e39755', base0A= '#a84a73', base0B= '#c965bf',
-				base0C= '#9c5fce', base0D= '#6a9eb5', base0E= '#6ac38f', base0F= '#a3ab5a',
+		config = function()
+			require("base16-colorscheme").with_config({
+				telescope = false,
 			})
-		end
+			require("base16-colorscheme").setup({
+				-- uwunicorn
+				base00 = "#242b26",
+				base01 = "#2f2a3f",
+				base02 = "#46354a",
+				base03 = "#6c3c62",
+				base04 = "#7e5f83",
+				base05 = "#eed5d9",
+				base06 = "#d9c2c6",
+				base07 = "#e4ccd0",
+				base08 = "#de5b44",
+				base09 = "#e39755",
+				base0A = "#a84a73",
+				base0B = "#c965bf",
+				base0C = "#9c5fce",
+				base0D = "#6a9eb5",
+				base0E = "#6ac38f",
+				base0F = "#a3ab5a",
+			})
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -56,6 +72,9 @@ return {
 		opts = {
 			symbol = "│",
 			options = { try_as_border = true },
+			draw = {
+				animation = require("mini.indentscope").gen_animation.none(),
+			},
 		},
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
