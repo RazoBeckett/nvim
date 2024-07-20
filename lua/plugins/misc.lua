@@ -15,8 +15,40 @@ return {
 		config = function()
 			require("mini.ai").setup()
 			require("mini.surround").setup()
-			require("mini.files").setup()
-			vim.keymap.set("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>", { silent = true, desc = "Open file explorer" })
+		end,
+	},
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({
+				default_file_explorer = true,
+				use_default_keymaps = false,
+				keymaps = {
+					["g?"] = "actions.show_help",
+					["<CR>"] = "actions.select",
+					["<C-\\>"] = "actions.select_split",
+					["<C-enter>"] = "actions.select_vsplit",
+					["<C-t>"] = "actions.select_tab",
+					["q"] = "actions.close",
+					["<C-r>"] = "actions.refresh",
+					["-"] = "actions.parent",
+					["_"] = "actions.open_cwd",
+					["`"] = "actions.cd",
+					["~"] = "actions.tcd",
+					["gs"] = "actions.change_sort",
+					["gx"] = "actions.open_external",
+					["g."] = "actions.toggle_hidden",
+				},
+				view_options = {
+					show_hidden = true,
+				},
+			})
+			vim.keymap.set("n", "<leader>e", function()
+				require("oil").toggle_float()
+			end, { desc = "Open Oil Float" })
 		end,
 	},
 	{

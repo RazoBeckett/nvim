@@ -36,6 +36,7 @@ return {
 					-- diagnostics
 					null_ls.builtins.diagnostics.phpcs,
 					null_ls.builtins.diagnostics.mypy,
+					null_ls.builtins.diagnostics.actionlint,
 					-- null_ls.builtins.diagnostics.stylelint,
 				},
 			})
