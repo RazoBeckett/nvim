@@ -18,7 +18,7 @@ return {
 		local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
-				path_display = { "smart" },
+				-- path_display = { "smart" },
 				mappings = {
 					i = {
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
