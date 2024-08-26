@@ -1,8 +1,5 @@
 return {
 	"ThePrimeagen/harpoon",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
 	keys = {
 		{ "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<CR>",        desc = "Mark file with harpoon" },
 		{ "<C-S-l>", "<cmd>lua require('harpoon.ui').nav_next()<CR>",             desc = "Go to next harpoon mark" },

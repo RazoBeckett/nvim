@@ -12,7 +12,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins", {
+require("lazy").setup({
+	spec = {
+		-- common dependencies
+		{ "nvim-lua/plenary.nvim", lazy = true },
+		{ "nvim-tree/nvim-web-devicons" },
+		{ import = "plugins" },
+	},
 	checker = {
 		enabled = true,
 		notify = false,

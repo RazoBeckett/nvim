@@ -18,6 +18,7 @@ end
 vim.scriptencoding = "utf-8" -- set the encoding of the script
 vim.opt.clipboard:append("unnamedplus") -- use the system clipboard
 vim.opt.iskeyword:append("-") -- the dash(-) will be considered as part of the word
+vim.opt.wildignore:append({ "*/node_modules/*" }) -- ignore these directories
 vim.opt.path:append("**") -- search for files in the current directory and its subdirectories
 local options = {
 	-- line wrapping
@@ -65,6 +66,8 @@ local options = {
 	ruler = false,
 	-- disable swap file
 	swapfile = false,
+	-- skip backup
+	backupskip = { "/tmp/*", "/private/tmp/*" },
 	-- set conceallevel
 	conceallevel = 2,
 }

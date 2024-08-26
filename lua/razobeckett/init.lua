@@ -1,3 +1,4 @@
+-- discipline
 require("razobeckett.keymaps")
 require("razobeckett.options-globals")
 require("razobeckett.lazy")
@@ -10,3 +11,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+local discipline = require("razobeckett.discipline")
+discipline.cowboy()

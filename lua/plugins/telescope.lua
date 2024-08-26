@@ -1,9 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.7",
+	tag = "0.1.8",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
-		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		"nvim-telescope/telescope-ui-select.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -24,7 +22,7 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
-				preview = false,
+				-- preview = false,
 				prompt_prefix = " 󰈞 ",
 				layout_strategy = "center",
 				sorting_strategy = "ascending",

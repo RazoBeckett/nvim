@@ -1,12 +1,12 @@
 return {
 	{ "wakatime/vim-wakatime", lazy = false },
+	-- { "nvim-lua/plenary.nvim", lazy = true },
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
 	{ "numToStr/Comment.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
 	{ "lambdalisue/vim-suda" },
 	{
 		"folke/todo-comments.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
 	{
@@ -15,13 +15,19 @@ return {
 		config = function()
 			require("mini.ai").setup()
 			require("mini.surround").setup()
+			local hipatterns = require("mini.hipatterns")
+			require("mini.hipatterns").setup({
+				highlighters = {
+					-- Highlight hex color strings (`#rrggbb`) using that color
+					hex_color = hipatterns.gen_highlighter.hex_color(),
+				},
+			})
 		end,
 	},
 	{
 		"stevearc/oil.nvim",
 		opts = {},
 		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("oil").setup({
 				default_file_explorer = true,
@@ -53,17 +59,14 @@ return {
 	},
 	{
 		"akinsho/bufferline.nvim",
-		-- version = "*",
-		branch = "main",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		opts = {
-			options = {
-				mode = "tabs",
-				separator_style = "slant",
-			},
-		},
+		version = "*",
 		config = function()
-			require("bufferline").setup({})
+			require("bufferline").setup({
+				options = {
+					show_buffer_close_icons = false,
+					numbers = "ordinal",
+				},
+			})
 			for i = 1, 9 do
 				vim.keymap.set("n", "<leader>" .. i, string.format("<cmd>BufferLineGoToBuffer %s <CR>", i))
 			end
