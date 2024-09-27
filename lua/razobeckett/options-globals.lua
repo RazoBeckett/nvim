@@ -58,7 +58,7 @@ local options = {
 	--misc.
 	undofile = true, -- undo persistence
 	scrolloff = 8, -- scrolloff
-	updatetime = 250, -- faster completion
+	updatetime = 200, -- faster completion
 	timeoutlen = 300, -- faster timeout
 	-- disable statusline
 	-- laststatus = 0,
