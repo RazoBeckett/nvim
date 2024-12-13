@@ -26,6 +26,7 @@ return {
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 				map("gT", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
 				map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+				map("gr", vim.lsp.buf.references, "[G]et [R]eferences")
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")

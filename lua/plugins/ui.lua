@@ -81,6 +81,45 @@ return {
 		end,
 	},
 	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+			bigfile = { enabled = true },
+			notifier = { enabled = true },
+			quickfile = { enabled = true },
+			statuscolumn = { enabled = false },
+			words = { enabled = false },
+			lazygit = {},
+		},
+		keys = {
+			{
+				"<leader>un",
+				function()
+					Snacks.notifier.hide()
+				end,
+				desc = "Dismiss all notifications",
+			},
+			{
+				"<leader>lg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Open [L]azy[G]it",
+			},
+			{
+				"<leader>gl",
+				function()
+					Snacks.lazygit.log()
+				end,
+				desc = "Open [G]it [L]og",
+			},
+		},
+	},
+	--[[ {
 		"rcarriga/nvim-notify",
 		event = "VeryLazy",
 		keys = {
@@ -108,5 +147,5 @@ return {
 		init = function()
 			vim.notify = require("notify")
 		end,
-	},
+	} ]]
 }
