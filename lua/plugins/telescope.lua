@@ -13,15 +13,9 @@ return {
 		"folke/todo-comments.nvim",
 	},
 	config = function()
-		local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
 				-- path_display = { "smart" },
-				mappings = {
-					i = {
-						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-					},
-				},
 				-- preview = false,
 				prompt_prefix = " 󰈞 ",
 				layout_strategy = "center",
