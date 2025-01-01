@@ -1,5 +1,4 @@
 return {
-	{ "tpope/vim-fugitive" },
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
@@ -31,7 +30,8 @@ return {
 			})
 		end,
 	},
-	--[[ {
+	{
+		enabled = false,
 		"kdheepak/lazygit.nvim",
 		cmd = {
 			"LazyGit",
@@ -43,5 +43,5 @@ return {
 		keys = {
 			{ "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Open [L]azy[G]it" } },
 		},
-	}, ]]
+	},
 }

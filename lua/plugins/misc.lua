@@ -6,6 +6,7 @@ return {
 	{ "lambdalisue/vim-suda" },
 	{
 		"folke/todo-comments.nvim",
+		enabled = false,
 		event = { "BufReadPre", "BufNewFile" },
 		opts = { signs = false },
 	},
@@ -25,6 +26,7 @@ return {
 		end,
 	},
 	{
+		enabled = false,
 		"stevearc/oil.nvim",
 		opts = {},
 		-- Optional dependencies
@@ -80,6 +82,7 @@ return {
 		},
 	},
 	{
+		enabled = false,
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && yarn install",

@@ -4,10 +4,10 @@ local globals = {
 	mapleader = " ",
 	maplocalleader = " ",
 	-- disable netrw
-	loaded_netrwPlugin = 1,
-	loaded_netrw = 1,
+	-- loaded_netrwPlugin = 1,
+	-- loaded_netrw = 1,
 	netrw_banner = 0,
-	netrw_liststyle = 3,
+	-- netrw_liststyle = 3,
 }
 
 for global, value in pairs(globals) do
