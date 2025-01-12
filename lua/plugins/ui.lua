@@ -2,8 +2,8 @@ return {
 	lazy = false,
 	terminal_colors = true,
 	{
-		-- "razobeckett/uwunified.nvim",
-		dir = "/home/razobeckett/Developer/personal/uwunified.nvim",
+		"razobeckett/uwunified.nvim",
+		-- dir = "/home/razobeckett/Developer/personal/uwunified.nvim",
 		dependencies = {
 			--- for trnasparent background
 			"xiyaowong/transparent.nvim",
