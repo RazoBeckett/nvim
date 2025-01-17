@@ -16,6 +16,8 @@ return {
 		config = function()
 			require("mini.ai").setup()
 			require("mini.surround").setup()
+			require("mini.files").setup()
+			vim.keymap.set("n", "<leader>e", MiniFiles.open, { desc = "Open [E]xplorer" })
 			local hipatterns = require("mini.hipatterns")
 			require("mini.hipatterns").setup({
 				highlighters = {
