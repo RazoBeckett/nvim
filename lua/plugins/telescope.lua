@@ -16,6 +16,7 @@ return {
 			defaults = {
 				-- path_display = { "smart" },
 				-- preview = false,
+				file_ignore_patterns = { "node_modules", "__pycache__" },
 				prompt_prefix = " 󰈞 ",
 				layout_strategy = "center",
 				sorting_strategy = "ascending",
