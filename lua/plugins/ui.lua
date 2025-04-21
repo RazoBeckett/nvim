@@ -1,20 +1,37 @@
+local uwunified_spec
+
+local path_to_uwunified = "/home/razobeckett/Developer/personal/uwunified.nvim"
+
+if vim.loop.fs_stat(path_to_uwunified) ~= nil then
+	uwunified_spec = {
+		dir = path_to_uwunified,
+	}
+else
+	uwunified_spec = {
+		"razobeckett/uwunified.nvim",
+		vim.notify("uwunified.nvim not found, using remote version", vim.log.levels.WARN),
+	}
+end
+
+uwunified_spec = vim.tbl_deep_extend("force", uwunified_spec, {
+	dependencies = {
+		"xiyaowong/transparent.nvim",
+	},
+	config = function()
+		require("transparent").setup({
+			exclude_groups = { "CursorLine" },
+		})
+		vim.cmd.colorscheme("uwunified")
+	end,
+})
+
 return {
 	lazy = false,
 	terminal_colors = true,
-	{
-		"razobeckett/uwunified.nvim",
-		-- dir = "/home/razobeckett/Developer/personal/uwunified.nvim",
-		dependencies = {
-			--- for trnasparent background
-			"xiyaowong/transparent.nvim",
-		},
-		config = function()
-			require("transparent").setup({
-				exclude_groups = { "CursorLine" },
-			})
-			vim.cmd.colorscheme("uwunified")
-		end,
-	},
+
+	-- Actual plugin list
+	uwunified_spec,
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -78,9 +95,6 @@ return {
 		priority = 1000,
 		lazy = false,
 		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
 			bigfile = { enabled = true },
 			notifier = { enabled = true },
 			quickfile = { enabled = true },
@@ -102,13 +116,6 @@ return {
 					Snacks.lazygit()
 				end,
 				desc = "Open [L]azy[G]it",
-			},
-			{
-				"<leader>gl",
-				function()
-					Snacks.lazygit.log()
-				end,
-				desc = "Open [G]it [L]og",
 			},
 		},
 	},
