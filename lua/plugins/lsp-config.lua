@@ -2,12 +2,12 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
+		{ "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 		{ "j-hui/fidget.nvim", opts = {} },
-		"williamboman/mason.nvim",
+		{ "mason-org/mason.nvim", version = "^1.0.0" },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -64,43 +64,32 @@ return {
 			},
 		})
 
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({ capabilities = capabilities })
-			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					diagnostics = {
-						global = { "vim" },
+		lspconfig.lua_ls.setup({
+			diagnostics = {
+				global = { "vim" },
+			},
+			completion = {
+				callSnippets = "Replace",
+			},
+		})
+		lspconfig.ansiblels.setup({
+			cmd = { "ansible-language-server", "--stdio" },
+			filetypes = { "yaml", "ansible" },
+			init_options = {
+				extraVars = {
+					ansible = {
+						ansible = "ansible",
+						ansiblePlaybook = "ansible-playbook",
+						ansibleGalaxy = "ansible-galaxy",
+						ansibleLint = "ansible-lint",
 					},
-					completion = {
-						callSnippets = "Replace",
-					},
-				})
-			end,
-			["ansiblels"] = function()
-				lspconfig["ansiblels"].setup({
-					cmd = { "ansible-language-server", "--stdio" },
-					filetypes = { "yaml", "ansible" },
-					init_options = {
-						extraVars = {
-							ansible = {
-								ansible = "ansible",
-								ansiblePlaybook = "ansible-playbook",
-								ansibleGalaxy = "ansible-galaxy",
-								ansibleLint = "ansible-lint",
-							},
-						},
-					},
-				})
-			end,
-			["gopls"] = function()
-				lspconfig["gopls"].setup({
-					cmd = { "gopls" },
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
-					root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-				})
-			end,
+				},
+			},
+		})
+		lspconfig.gopls.setup({
+			cmd = { "gopls" },
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 		})
 	end,
 }
