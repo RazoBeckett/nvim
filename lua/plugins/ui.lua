@@ -14,6 +14,7 @@ else
 end
 
 uwunified_spec = vim.tbl_deep_extend("force", uwunified_spec, {
+	enabled = false,
 	dependencies = {
 		"xiyaowong/transparent.nvim",
 	},
@@ -27,10 +28,22 @@ uwunified_spec = vim.tbl_deep_extend("force", uwunified_spec, {
 
 return {
 	lazy = false,
+	priority = 1000,
 	terminal_colors = true,
 
 	-- Actual plugin list
 	uwunified_spec,
+	{
+		"webhooked/kanso.nvim",
+		config = function()
+			---@diagnostic disable-next-line: missing-fields
+			require("kanso").setup({
+				theme = "zen",
+				transparent = true,
+			})
+			require("kanso").load("zen")
+		end,
+	},
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
