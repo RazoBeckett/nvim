@@ -20,8 +20,36 @@ return {
 		end,
 	},
 	{
+		"stevearc/conform.nvim",
+		opts = {},
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					go = { "gofmt", "goimports" },
+					astro = { lsp_format = "first" },
+					css = { "prettierd", "prettier", stop_after_first = true },
+					html = { "prettierd", "prettier", stop_after_first = true },
+					javascript = { "prettierd", "prettier", stop_after_first = true },
+					lua = { "stylua" },
+					python = {
+						"ruff_fix",
+						"ruff_format",
+						"ruff_organize_imports",
+					},
+					rust = { "rustfmt", lsp_format = "fallback" },
+					typescript = { "prettierd", "prettier", stop_after_first = true },
+					nix = { "alejandra" },
+				},
+			})
+			vim.keymap.set("n", "<leader>gf", function()
+				require("conform").format({ bufnr = 0, async = true, lsp_format = "fallback" })
+			end, { desc = "[G]et [F]ormat" })
+		end,
+	},
+	{
 		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
+		enabled = false,
 		config = function()
 			local venv_path =
 				'import sys; sys.path.append("/usr/lib/python3.11/site-packages"); import pylint_venv; pylint_venv.inithook(force_venv_activation=True, quiet=True)'
