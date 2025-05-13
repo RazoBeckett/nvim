@@ -9,7 +9,7 @@ if vim.loop.fs_stat(path_to_uwunified) ~= nil then
 else
 	uwunified_spec = {
 		"razobeckett/uwunified.nvim",
-		vim.notify("uwunified.nvim not found, using remote version", vim.log.levels.WARN),
+		-- vim.notify("uwunified.nvim not found, using remote version", vim.log.levels.WARN),
 	}
 end
 
