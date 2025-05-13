@@ -9,7 +9,7 @@ end
 -- keymaps
 k("n", "H", "^", "Go to BOL", true)
 k("n", "L", "$", "Go to EOL", true)
-k("i", "jk", "<Esc>", "jk to escape", true)
+-- k("i", "jk", "<Esc>", "jk to escape", true)
 k("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear highlights")
 k("n", "<leader><F5>", "<cmd>!python %<CR>", "Run Python", true)
 k("n", "<leader><F6>", ":e %:h", "Create New file")
