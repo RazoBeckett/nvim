@@ -37,3 +37,11 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_user_command("Test", function()
 	vim.notify("Hello World", vim.log.levels.INFO, { title = "Test", icon = "🎉" })
 end, {})
+
+vim.api.nvim_create_user_command("Gpush", function()
+	vim.cmd("Git push")
+end, {})
+
+vim.api.nvim_create_user_command("Gpull", function()
+	vim.cmd("Git pull")
+end, {})
