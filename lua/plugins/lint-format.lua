@@ -21,6 +21,7 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
+		event = { "BufWritePre", "BufReadPost" },
 		opts = {},
 		config = function()
 			require("conform").setup({

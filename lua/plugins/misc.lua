@@ -1,9 +1,21 @@
 return {
-	{ "wakatime/vim-wakatime", lazy = false },
-	-- { "nvim-lua/plenary.nvim", lazy = true },
+	{ "wakatime/vim-wakatime", event = { "VeryLazy" } },
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
 	{ "numToStr/Comment.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
-	{ "lambdalisue/vim-suda" },
+	{ "lambdalisue/vim-suda", cmd = { "SudaWrite", "SudaRead" } },
+	{ "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
+	{
+		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+		-- used for completion, annotations and signatures of Neovim apis
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
 	{
 		"folke/todo-comments.nvim",
 		enabled = false,

@@ -7,13 +7,11 @@ return {
 		{ "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
 
 		-- Completion engine replacement
-		{ "saghen/blink.cmp", dependencies = { "rafamadriz/friendly-snippets" } },
+		-- "saghen/blink.cmp"
 
 		-- Optional helpers
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
-		{ "j-hui/fidget.nvim", opts = {} },
 	},
 	config = function()
 		-- Bootstrap Mason

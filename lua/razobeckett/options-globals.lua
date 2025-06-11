@@ -16,7 +16,9 @@ end
 
 -- vim options --
 vim.scriptencoding = "utf-8" -- set the encoding of the script
-vim.opt.clipboard:append("unnamedplus") -- use the system clipboard
+vim.schedule(function() --  Schedule the setting after `UiEnter` because it can increase startup-time.
+	vim.opt.clipboard:append("unnamedplus") -- use the system clipboard
+end)
 vim.opt.iskeyword:append("-") -- the dash(-) will be considered as part of the word
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- ignore these directories
 vim.opt.path:append("**") -- search for files in the current directory and its subdirectories
