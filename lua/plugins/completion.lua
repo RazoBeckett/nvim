@@ -16,7 +16,10 @@ return {
 			completion = { documentation = { auto_show = false } },
 
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "snippets", "buffer", "dadbod" },
+				providers = {
+					dadbod = { name = "dadbod", module = "vim_dadbod_completion.blink" },
+				},
 			},
 
 			fuzzy = { implementation = "prefer_rust_with_warning" },
