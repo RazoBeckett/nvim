@@ -12,5 +12,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.filetype.add({
+	filename = {
+		[".env"] = "dotenv",
+		["env"] = "dotenv",
+	},
+	pattern = {
+		["%.env%..+"] = "dotenv",
+	},
+})
+
 local discipline = require("razobeckett.discipline")
 discipline.cowboy()
