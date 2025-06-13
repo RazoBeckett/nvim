@@ -49,6 +49,11 @@ return {
 		priority = 1000,
 		lazy = false,
 		opts = {
+			indent = {
+				enabled = true,
+				priority = 1,
+				animate = { enabled = false },
+			},
 			bigfile = { enabled = true },
 			notifier = { enabled = true },
 			quickfile = { enabled = true },
