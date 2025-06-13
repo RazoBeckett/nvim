@@ -3,7 +3,6 @@ return {
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
 	{ "numToStr/Comment.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
 	{ "lambdalisue/vim-suda", cmd = { "SudaWrite", "SudaRead" } },
-	{ "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 		-- used for completion, annotations and signatures of Neovim apis
