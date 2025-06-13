@@ -156,6 +156,18 @@ return {
 			for i = 1, 9 do
 				vim.keymap.set("n", "<leader>" .. i, string.format("<cmd>BufferLineGoToBuffer %s <CR>", i))
 			end
+
+			-- Get the highlights
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = function()
+					local highlights = require("bufferline.config").highlights
+					for _, def in ipairs(vim.tbl_values(highlights)) do
+						local name = def.hl_group
+						def.hl_group = nil
+						vim.api.nvim_set_hl(0, name, def)
+					end
+				end,
+			})
 		end,
 	},
 	{
