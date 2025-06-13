@@ -34,8 +34,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_user_command("Test", function()
-	vim.notify("Hello World", vim.log.levels.INFO, { title = "Test", icon = "🎉" })
+vim.api.nvim_create_user_command("About", function()
+	vim.notify(
+		"RazoBeckett's Neovim Config\n- https://github.com/RazoBeckett/nvim",
+		vim.log.levels.INFO,
+		{ title = "About", icon = "" }
+	)
 end, {})
 
 vim.api.nvim_create_user_command("Gpush", function()
