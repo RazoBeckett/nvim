@@ -14,10 +14,26 @@ return {
 				nerd_font_variant = "mono",
 			},
 
-			completion = { documentation = { auto_show = false } },
+			completion = {
+				list = { selection = {
+					auto_insert = false,
+				} },
+				menu = {
+					draw = {
+						columns = {
+							{ "label", "label_description", gap = 1 },
+							{ "kind_icon", "kind", gap = 1 },
+						},
+					},
+				},
+				documentation = { auto_show = false },
+			},
 
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer", "dadbod" },
+				default = { "lsp", "path", "snippets", "buffer" },
+				per_filetype = {
+					sql = { "dadbod", "snippets", "buffer" },
+				},
 				providers = {
 					dadbod = { name = "dadbod", module = "vim_dadbod_completion.blink" },
 				},
