@@ -72,6 +72,8 @@ local options = {
 	backupskip = { "/tmp/*", "/private/tmp/*" },
 	-- set conceallevel
 	conceallevel = 2,
+	-- Disable modeline for performance and security
+	modeline = false,
 }
 
 for opt, value in pairs(options) do
