@@ -74,6 +74,9 @@ local options = {
 	conceallevel = 2,
 	-- Disable modeline for performance and security
 	modeline = false,
+	-- Performace improvements
+	redrawtime = 10000,
+	maxmempattern = 20000,
 }
 
 for opt, value in pairs(options) do

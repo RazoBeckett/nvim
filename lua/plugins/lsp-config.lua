@@ -69,11 +69,6 @@ return {
 			virtual_text = {
 				source = "if_many",
 				spacing = 2,
-				format = function(d)
-					if d.severity <= vim.diagnostic.severity.WARN then
-						return d.message
-					end
-				end,
 			},
 		})
 
