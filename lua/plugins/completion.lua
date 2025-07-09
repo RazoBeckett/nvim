@@ -14,12 +14,20 @@ return {
 				nerd_font_variant = "mono",
 			},
 
+			signature = {
+				enabled = true,
+				window = {
+					show_documentation = false,
+				},
+			},
+
 			completion = {
 				list = { selection = {
 					auto_insert = false,
 				} },
 				menu = {
 					draw = {
+						treesitter = { "lsp" },
 						columns = {
 							{ "label", "label_description", gap = 1 },
 							{ "kind_icon", "kind", gap = 1 },
@@ -30,7 +38,7 @@ return {
 			},
 
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "snippets", "lsp", "path", "buffer" },
 				per_filetype = {
 					sql = { "dadbod", "snippets", "buffer" },
 				},
@@ -44,7 +52,7 @@ return {
 		opts_extend = { "sources.default" },
 	},
 	{
-		"github/copilot.vim",
+		-- "github/copilot.vim",
 		--[[ "supermaven-inc/supermaven-nvim",
 		config = function()
 			require("supermaven-nvim").setup({
