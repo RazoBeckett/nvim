@@ -28,9 +28,10 @@ return {
 				formatters_by_ft = {
 					go = { "gofmt", "goimports" },
 					astro = { lsp_format = "first" },
-					css = { "prettierd", "prettier", stop_after_first = true },
+					css = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 					html = { "prettierd", "prettier", stop_after_first = true },
-					javascript = { "prettierd", "prettier", stop_after_first = true },
+					javascript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+					javascriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 					lua = { "stylua" },
 					python = {
 						"ruff_fix",
@@ -38,7 +39,8 @@ return {
 						"ruff_organize_imports",
 					},
 					rust = { "rustfmt", lsp_format = "fallback" },
-					typescript = { "prettierd", "prettier", stop_after_first = true },
+					typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+					typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 					nix = { "alejandra" },
 				},
 			})
