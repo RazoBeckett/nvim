@@ -25,6 +25,7 @@ end)
 vim.opt.iskeyword:append("-") -- the dash(-) will be considered as part of the word
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- ignore these directories
 vim.opt.path:append("**") -- search for files in the current directory and its subdirectories
+vim.opt.shortmess:append("I") -- disable centered "intro" screen
 local options = {
 	-- line wrapping
 	wrap = false,
