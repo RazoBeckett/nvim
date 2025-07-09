@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 return {
 	{ "wakatime/vim-wakatime", event = { "VeryLazy" } },
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
@@ -17,7 +18,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		enabled = false,
+		enabled = true,
 		event = { "BufReadPre", "BufNewFile" },
 		opts = { signs = false },
 	},
