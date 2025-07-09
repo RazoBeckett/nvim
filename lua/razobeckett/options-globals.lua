@@ -8,6 +8,9 @@ local globals = {
 	-- loaded_netrw = 1,
 	netrw_banner = 0,
 	-- netrw_liststyle = 3,
+	-- disable providers
+	loaded_perl_provider = 0,
+	loaded_ruby_provider = 0,
 }
 
 for global, value in pairs(globals) do
