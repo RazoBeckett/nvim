@@ -15,7 +15,9 @@ k("n", "<leader><F5>", "<cmd>!python %<CR>", "Run Python", true)
 k("n", "<leader><F6>", ":e %:h", "Create New file")
 k("n", "+", "<C-a>", "Increment number", true)
 k("n", "-", "<C-x>", "Decrement number", true)
-k("n", "gl", function() vim.diagnostic.open_float() end, "Open diagnostics in Float", true)
+k("n", "gl", function()
+	vim.diagnostic.open_float()
+end, "Open diagnostics in Float", true)
 
 -- borrowed from Josean Martinez
 k("n", "<leader>Sv", "<C-w>v", "Split window vertically")
