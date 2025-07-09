@@ -46,14 +46,18 @@ return {
 			bufmap("n", "gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 			bufmap("n", "gr", vim.lsp.buf.references, "[G]et [R]eferences")
 			bufmap("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+			-- Using Snacks picker take a look at 'Snacks.picker.lua' file
 			bufmap("n", "<leader>D", function()
-				require("telescope.builtin").lsp_type_definitions()
+				Snacks.picker.lsp_type_definitions() -- Snacks
+				-- require("telescope.builtin").lsp_type_definitions() -- Telescope
 			end, "Type [D]efinition")
 			bufmap("n", "<leader>ds", function()
-				require("telescope.builtin").lsp_document_symbols()
+				Snacks.picker.lsp_symbols() -- Snacks
+				-- require("telescope.builtin").lsp_document_symbols() -- Telescope
 			end, "[D]ocument [S]ymbols")
 			bufmap("n", "<leader>ws", function()
-				require("telescope.builtin").lsp_dynamic_workspace_symbols()
+				Snacks.picker.lsp_workspace_symbols()
+				-- require("telescope.builtin").lsp_dynamic_workspace_symbols() -- Telescope
 			end, "[W]orkspace [S]ymbols")
 		end
 

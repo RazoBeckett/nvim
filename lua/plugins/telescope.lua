@@ -1,5 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	enabled = false,
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-telescope/telescope-ui-select.nvim",
@@ -15,7 +16,7 @@ return {
 		require("telescope").setup({
 			defaults = {
 				-- path_display = { "smart" },
-				-- preview = false,
+				preview = false,
 				file_ignore_patterns = { "node_modules", "__pycache__", ".obsidian" },
 				prompt_prefix = " 󰈞 ",
 				layout_strategy = "center",

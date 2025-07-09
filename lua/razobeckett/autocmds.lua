@@ -18,8 +18,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
 		local buf_name = vim.api.nvim_buf_get_name(0)
 		if not buf_name or buf_name == "" then -- Check for empty or non-existent buffer name
-			if not pcall(require("telescope.builtin").git_files) then
+			-- Telescope
+			--[[ if not pcall(require("telescope.builtin").git_files) then
 				vim.cmd("Telescope find_files")
+			end ]]
+
+			-- Snacks
+			if not pcall(Snacks.picker.git_files) then
+				Snacks.picker.files()
 			end
 		end
 	end,
