@@ -9,7 +9,13 @@ return {
 		{
 			"<C-p>",
 			function()
-				if not pcall(Snacks.picker.git_files) then
+				local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
+				local result = handle:read("*a")
+				handle:close()
+
+				if result:match("true") then
+					Snacks.picker.git_files()
+				else
 					Snacks.picker.files()
 				end
 			end,

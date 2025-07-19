@@ -61,22 +61,23 @@ return {
 			words = { enabled = false },
 			lazygit = {},
 			picker = {
-				layout = {
-					layout = {
-						box = "horizontal",
-						width = 0.5,
-						min_width = 40,
-						height = 0.4,
-						{
-							box = "vertical",
-							border = "rounded",
-							title = "{title} {live} {flags}",
-							{ win = "input", height = 1, border = "bottom" },
-							{ win = "list", border = "none" },
-						},
-						-- { win = "preview", title = "{preview}", border = "rounded", width = 0.5 },
-					},
-				},
+				layout = "vscode",
+				-- layout = {
+				-- 	layout = {
+				-- 		box = "horizontal",
+				-- 		width = 0.5,
+				-- 		min_width = 40,
+				-- 		height = 0.4,
+				-- 		{
+				-- 			box = "vertical",
+				-- 			border = "rounded",
+				-- 			title = "{title} {live} {flags}",
+				-- 			{ win = "input", height = 1, border = "bottom" },
+				-- 			{ win = "list", border = "none" },
+				-- 		},
+				-- 		-- { win = "preview", title = "{preview}", border = "rounded", width = 0.5 },
+				-- 	},
+				-- },
 			},
 		},
 		keys = {
