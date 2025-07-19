@@ -3,8 +3,8 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		-- Mason core & Mason-LSPConfig bridge
-		{ "williamboman/mason.nvim", version = "^2.0.0" },
-		{ "williamboman/mason-lspconfig.nvim", version = "^2.0.0" },
+		{ "williamboman/mason.nvim", version = "^1.0.0" },
+		{ "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
 
 		-- Completion engine replacement
 		-- "saghen/blink.cmp"
@@ -31,7 +31,7 @@ return {
 
 		local capabilities = blink_cmp.get_lsp_capabilities({
 			vim.lsp.protocol.make_client_capabilities(),
-			require("lsp-file-operations").default_capabilities(),
+			-- require("lsp-file-operations").default_capabilities(),
 		})
 
 		local on_attach = function(client, bufnr)
@@ -80,9 +80,62 @@ return {
 			},
 		})
 
+		-- Auto-setup all installed servers with optional overrides
+		mason_lspconfig.setup_handlers({
+			-- Default handler
+			function(server_name)
+				require("lspconfig")[server_name].setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
+			end,
+
+			-- lua_ls override
+			["lua_ls"] = function()
+				require("lspconfig").lua_ls.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
+							completion = { callSnippet = "Replace" },
+						},
+					},
+				})
+			end,
+
+			-- ansiblels override
+			["ansiblels"] = function()
+				require("lspconfig").ansiblels.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+					cmd = { "ansible-language-server", "--stdio" },
+					filetypes = { "yaml", "ansible" },
+					init_options = {
+						ansible = {
+							ansible = "ansible",
+							ansiblePlaybook = "ansible-playbook",
+							ansibleLint = "ansible-lint",
+						},
+					},
+				})
+			end,
+
+			-- gopls override
+			["gopls"] = function()
+				require("lspconfig").gopls.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+					cmd = { "gopls" },
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
+				})
+			end,
+		})
+
 		-- optional overrides
 
-		local lspconfig = require("lspconfig")
+		--[[ local lspconfig = require("lspconfig")
 
 		-- lua_ls override
 		lspconfig.lua_ls.setup({
@@ -118,6 +171,6 @@ return {
 			cmd = { "gopls" },
 			filetypes = { "go", "gomod", "gowork", "gotmpl" },
 			root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
-		})
+		}) ]]
 	end,
 }
