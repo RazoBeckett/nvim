@@ -159,17 +159,19 @@ return {
 				vim.keymap.set("n", "<leader>" .. i, string.format("<cmd>BufferLineGoToBuffer %s <CR>", i))
 			end
 
-			-- Get the highlights
-			vim.api.nvim_create_autocmd("ColorScheme", {
-				callback = function()
-					local highlights = require("bufferline.config").highlights
-					for _, def in ipairs(vim.tbl_values(highlights)) do
-						local name = def.hl_group
-						def.hl_group = nil
-						vim.api.nvim_set_hl(0, name, def)
+			-- Make bufferline transparent with a timer to ensure it applies after everything loads
+			local function make_transparent()
+				-- Get all BufferLine highlight groups and make them transparent
+				local hls = vim.api.nvim_get_hl(0, {})
+				for name, _ in pairs(hls) do
+					if name:match("^BufferLine") then
+						local hl = vim.api.nvim_get_hl(0, { name = name })
+						if hl.bg then
+							vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", hl, { bg = "NONE" }))
+						end
 					end
-				end,
-			})
+				end
+			end
 		end,
 	},
 	{
@@ -211,6 +213,19 @@ return {
 			global_keymaps = true,
 			global_keymaps_prefix = "<leader>R",
 			kulala_keymaps_prefix = "",
+		},
+	},
+	{
+		dir = "/home/razobeckett/Developer/personal/spoclient.nvim",
+		name = "spoclient.nvim",
+		config = function()
+			require("spotify").setup({
+				clientId = "cdf07ff3f98e4d19b2c49f14c1d78873",
+			})
+		end,
+		dependencies = {
+			"folke/snacks.nvim",
+			"nvim-lua/plenary.nvim",
 		},
 	},
 }
