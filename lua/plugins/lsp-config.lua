@@ -2,12 +2,9 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		-- Mason core & Mason-LSPConfig bridge
+		-- Mason core for LSP server management
 		{ "williamboman/mason.nvim", version = "^1.0.0" },
 		{ "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
-
-		-- Completion engine replacement
-		-- "saghen/blink.cmp"
 
 		-- Optional helpers
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -18,11 +15,10 @@ return {
 		local mason = require("mason")
 		mason.setup()
 
-		-- Bridge Mason -> lspconfig
+		-- Ensure LSP servers are installed via mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
 		mason_lspconfig.setup({
 			ensure_installed = { "lua_ls", "ansiblels", "gopls" },
-			-- automatic_installation = true, -- Removed in v.2.0.0
 		})
 
 		-- Shared on_attach & capabilities
@@ -80,65 +76,13 @@ return {
 			},
 		})
 
-		-- Auto-setup all installed servers with optional overrides
-		mason_lspconfig.setup_handlers({
-			-- Default handler
-			function(server_name)
-				require("lspconfig")[server_name].setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
-			end,
+		-- Configure LSP servers using the new vim.lsp.config API (Neovim 0.11+)
 
-			-- lua_ls override
-			["lua_ls"] = function()
-				require("lspconfig").lua_ls.setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = { globals = { "vim" } },
-							completion = { callSnippet = "Replace" },
-						},
-					},
-				})
-			end,
-
-			-- ansiblels override
-			["ansiblels"] = function()
-				require("lspconfig").ansiblels.setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-					cmd = { "ansible-language-server", "--stdio" },
-					filetypes = { "yaml", "ansible" },
-					init_options = {
-						ansible = {
-							ansible = "ansible",
-							ansiblePlaybook = "ansible-playbook",
-							ansibleLint = "ansible-lint",
-						},
-					},
-				})
-			end,
-
-			-- gopls override
-			["gopls"] = function()
-				require("lspconfig").gopls.setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-					cmd = { "gopls" },
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
-					root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
-				})
-			end,
-		})
-
-		-- optional overrides
-
-		--[[ local lspconfig = require("lspconfig")
-
-		-- lua_ls override
-		lspconfig.lua_ls.setup({
+		-- lua_ls configuration
+		vim.lsp.config("lua_ls", {
+			cmd = { "lua-language-server" },
+			filetypes = { "lua" },
+			root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
@@ -149,12 +93,13 @@ return {
 			},
 		})
 
-		-- ansiblels override
-		lspconfig.ansiblels.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
+		-- ansiblels configuration
+		vim.lsp.config("ansiblels", {
 			cmd = { "ansible-language-server", "--stdio" },
 			filetypes = { "yaml", "ansible" },
+			root_markers = { ".git", "ansible.cfg", "inventory", "playbook.yml" },
+			on_attach = on_attach,
+			capabilities = capabilities,
 			init_options = {
 				ansible = {
 					ansible = "ansible",
@@ -164,13 +109,16 @@ return {
 			},
 		})
 
-		-- gopls override
-		lspconfig.gopls.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
+		-- gopls configuration
+		vim.lsp.config("gopls", {
 			cmd = { "gopls" },
 			filetypes = { "go", "gomod", "gowork", "gotmpl" },
-			root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
-		}) ]]
+			root_markers = { "go.work", "go.mod", ".git" },
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
+		-- Enable all configured LSP servers
+		vim.lsp.enable({ "lua_ls", "ansiblels", "gopls" })
 	end,
 }
