@@ -196,9 +196,9 @@ return {
 		ft = "dotenv",
 		config = function()
 			require("cloak").setup({
-				cloak_character = "7",
 				highlight_group = "None",
 			})
+			vim.keymap.set("n", "<leader>S", "<cmd>CloakPreviewLine<cr>")
 		end,
 	},
 	{
