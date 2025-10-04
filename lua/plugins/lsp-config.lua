@@ -3,8 +3,8 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		-- Mason core for LSP server management
-		{ "williamboman/mason.nvim", version = "^1.0.0" },
-		{ "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
+		{ "williamboman/mason.nvim" },
+		{ "williamboman/mason-lspconfig.nvim" },
 
 		-- Optional helpers
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -18,7 +18,7 @@ return {
 		-- Ensure LSP servers are installed via mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
 		mason_lspconfig.setup({
-			ensure_installed = { "lua_ls", "ansiblels", "gopls" },
+			ensure_installed = { "lua_ls", "ansiblels", "gopls", "ts_ls" },
 		})
 
 		-- Shared on_attach & capabilities
@@ -78,47 +78,76 @@ return {
 
 		-- Configure LSP servers using the new vim.lsp.config API (Neovim 0.11+)
 
-		-- lua_ls configuration
-		vim.lsp.config("lua_ls", {
-			cmd = { "lua-language-server" },
-			filetypes = { "lua" },
-			root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = { globals = { "vim" } },
-					completion = { callSnippet = "Replace" },
+		local lsps = {
+			{
+				"ts_ls",
+				{
+					cmd = { "typescript-language-server", "--stdio" },
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+					},
+					root_markers = { "tsconfig.json", "package.json" },
+					on_attach = on_attach,
+					capabilities = capabilities,
 				},
 			},
-		})
-
-		-- ansiblels configuration
-		vim.lsp.config("ansiblels", {
-			cmd = { "ansible-language-server", "--stdio" },
-			filetypes = { "yaml", "ansible" },
-			root_markers = { ".git", "ansible.cfg", "inventory", "playbook.yml" },
-			on_attach = on_attach,
-			capabilities = capabilities,
-			init_options = {
-				ansible = {
-					ansible = "ansible",
-					ansiblePlaybook = "ansible-playbook",
-					ansibleLint = "ansible-lint",
+			-- lua configuration
+			{
+				"lua_ls",
+				{
+					cmd = { "lua-language-server" },
+					filetypes = { "lua" },
+					root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
+					on_attach = on_attach,
+					capabilities = capabilities,
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
+							completion = { callSnippet = "Replace" },
+						},
+					},
 				},
 			},
-		})
+			-- ansiblels configuration
+			{
+				"ansiblels",
+				{
+					cmd = { "ansible-language-server", "--stdio" },
+					filetypes = { "yaml", "ansible" },
+					root_markers = { ".git", "ansible.cfg", "inventory", "playbook.yml" },
+					on_attach = on_attach,
+					capabilities = capabilities,
+					init_options = {
+						ansible = {
+							ansible = "ansible",
+							ansiblePlaybook = "ansible-playbook",
+							ansibleLint = "ansible-lint",
+						},
+					},
+				},
+			},
+			-- gopls configuration
+			{
+				"gopls",
+				{
+					cmd = { "gopls" },
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					root_markers = { "go.work", "go.mod", ".git" },
+					on_attach = on_attach,
+					capabilities = capabilities,
+				},
+			},
+		}
 
-		-- gopls configuration
-		vim.lsp.config("gopls", {
-			cmd = { "gopls" },
-			filetypes = { "go", "gomod", "gowork", "gotmpl" },
-			root_markers = { "go.work", "go.mod", ".git" },
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		-- Enable all configured LSP servers
-		vim.lsp.enable({ "lua_ls", "ansiblels", "gopls" })
+		for _, lsp in pairs(lsps) do
+			local name, config = lsp[1], lsp[2]
+			vim.lsp.enable(name)
+			if config then
+				vim.lsp.config(name, config)
+			end
+		end
 	end,
 }
