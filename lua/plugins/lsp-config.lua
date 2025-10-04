@@ -90,19 +90,14 @@ return {
 						"typescriptreact",
 					},
 					root_markers = { "tsconfig.json", "package.json" },
-					on_attach = on_attach,
-					capabilities = capabilities,
 				},
 			},
-			-- lua configuration
 			{
 				"lua_ls",
 				{
 					cmd = { "lua-language-server" },
 					filetypes = { "lua" },
 					root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
-					on_attach = on_attach,
-					capabilities = capabilities,
 					settings = {
 						Lua = {
 							diagnostics = { globals = { "vim" } },
@@ -111,15 +106,12 @@ return {
 					},
 				},
 			},
-			-- ansiblels configuration
 			{
 				"ansiblels",
 				{
 					cmd = { "ansible-language-server", "--stdio" },
 					filetypes = { "yaml", "ansible" },
 					root_markers = { ".git", "ansible.cfg", "inventory", "playbook.yml" },
-					on_attach = on_attach,
-					capabilities = capabilities,
 					init_options = {
 						ansible = {
 							ansible = "ansible",
@@ -129,25 +121,24 @@ return {
 					},
 				},
 			},
-			-- gopls configuration
 			{
 				"gopls",
 				{
 					cmd = { "gopls" },
 					filetypes = { "go", "gomod", "gowork", "gotmpl" },
 					root_markers = { "go.work", "go.mod", ".git" },
-					on_attach = on_attach,
-					capabilities = capabilities,
 				},
 			},
 		}
 
 		for _, lsp in pairs(lsps) do
 			local name, config = lsp[1], lsp[2]
-			vim.lsp.enable(name)
 			if config then
+				config.on_attach = on_attach
+				config.capabilities = capabilities
 				vim.lsp.config(name, config)
 			end
+			vim.lsp.enable(name)
 		end
 	end,
 }
