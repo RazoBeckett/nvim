@@ -2,6 +2,7 @@
 require("razobeckett.keymaps")
 require("razobeckett.options-globals")
 require("razobeckett.lazy")
+require("razobeckett.lsp")
 require("razobeckett.autocmds")
 require("razobeckett.floating-terminal")
 

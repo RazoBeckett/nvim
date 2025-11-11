@@ -117,7 +117,7 @@ return {
 		end,
 	},
 	{
-		enabled = false,
+		enabled = true,
 		"stevearc/oil.nvim",
 		opts = {},
 		-- Optional dependencies

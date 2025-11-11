@@ -50,6 +50,21 @@ return {
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
+		config = function()
+			local blink_cmp = require("blink.cmp")
+			blink_cmp.setup()
+
+			local capabilities = blink_cmp.get_lsp_capabilities({
+				vim.lsp.protocol.make_client_capabilities(),
+			})
+			vim.lsp.config("*", {
+				capabilities = capabilities,
+			})
+		end,
+	},
+	{
+		"antosha417/nvim-lsp-file-operations",
+		config = true,
 	},
 	{
 		-- "github/copilot.vim",

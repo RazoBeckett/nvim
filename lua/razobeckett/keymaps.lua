@@ -36,3 +36,4 @@ k("n", "<C-d>", "<C-d>zz", "Scroll down", true)
 
 -- borrowed from kickstart.nvim @tjdevries
 k("t", "<Esc><Esc>", "<C-\\><C-n>", "Exit terminal mode")
+k("n", "<leader>e", ":Fyler kind=split_right_most<CR>", "Open Fyler")
