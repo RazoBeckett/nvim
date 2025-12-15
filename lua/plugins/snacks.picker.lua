@@ -92,14 +92,14 @@ return {
 			desc = "[S]earch [K]eymaps",
 		},
 
-		{
+		--[[ {
 			"<leader>e",
 			function()
 				Snacks.explorer({
 					layout = { layout = { position = "right" } },
 				})
 			end,
-		},
+		}, ]]
 		-- gimme all
 		{
 			"<leader>ss",

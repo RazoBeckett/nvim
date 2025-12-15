@@ -2,6 +2,15 @@ local uwunified_spec
 
 local path_to_uwunified = "/home/razobeckett/Developer/personal/uwunified.nvim"
 
+local transparent_nvim = {
+	"xiyaowong/transparent.nvim",
+	config = function()
+		require("transparent").setup({
+			exclude_groups = { "CursorLine" },
+		})
+	end,
+}
+
 if vim.loop.fs_stat(path_to_uwunified) ~= nil then
 	uwunified_spec = {
 		dir = path_to_uwunified,
@@ -9,22 +18,13 @@ if vim.loop.fs_stat(path_to_uwunified) ~= nil then
 else
 	uwunified_spec = {
 		"razobeckett/uwunified.nvim",
+		dependencies = transparent_nvim,
 		-- vim.notify("uwunified.nvim not found, using remote version", vim.log.levels.WARN),
+		config = function()
+			vim.cmd.colorscheme("uwunified")
+		end,
 	}
 end
-
-uwunified_spec = vim.tbl_deep_extend("force", uwunified_spec, {
-	enabled = false,
-	dependencies = {
-		"xiyaowong/transparent.nvim",
-	},
-	config = function()
-		require("transparent").setup({
-			exclude_groups = { "CursorLine" },
-		})
-		vim.cmd.colorscheme("uwunified")
-	end,
-})
 
 return {
 	lazy = false,
