@@ -1,25 +1,39 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		branch = "master",
-		build = ":TSUpdate",
+		branch = "main",
 		lazy = false,
+		build = ":TSUpdate",
 		dependencies = {
 			"windwp/nvim-ts-autotag",
 			"nvim-treesitter/nvim-treesitter-context",
 		},
 		config = function()
-			local config = require("nvim-treesitter.configs")
-			---@diagnostic disable-next-line: missing-fields
-			config.setup({
+			require("nvim-treesitter").setup({
 				auto_install = true,
-				highlight = { enable = true },
-				indent = { enable = true },
-				autotag = { enable = true },
-				ensure_installed = { "c", "python", "javascript", "java", "yaml", "bash" },
+			})
+
+			require("nvim-treesitter").install({
+				"bash",
+				"c",
+				"java",
+				"javascript",
+				"python",
+				"yaml",
+				"lua",
+				"vim",
+				"vimdoc",
+				"query",
+			})
+
+			require("nvim-ts-autotag").setup()
+
+			require("treesitter-context").setup({
+				enable = true,
 			})
 		end,
 	},
+
 	{
 		"stevearc/conform.nvim",
 		event = { "BufWritePre", "BufReadPost" },
@@ -34,35 +48,36 @@ return {
 					javascript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 					javascriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 					lua = { "stylua" },
-					python = {
-						"ruff_fix",
-						"ruff_format",
-						"ruff_organize_imports",
-					},
+					python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 					rust = { "rustfmt", lsp_format = "fallback" },
 					typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 					typescriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 					nix = { "alejandra" },
 				},
 			})
-			-- Autoformat on save
+
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = "*",
 				callback = function(args)
 					require("conform").format({ bufnr = args.buf })
 				end,
 			})
+
 			vim.keymap.set("n", "<leader>gf", function()
-				require("conform").format({ bufnr = 0, async = true, lsp_format = "fallback" })
+				require("conform").format({
+					bufnr = 0,
+					async = true,
+					lsp_format = "fallback",
+				})
 			end, { desc = "[G]et [F]ormat" })
 		end,
 	},
+
 	{
 		"windwp/nvim-autopairs",
 		event = { "InsertEnter" },
 		config = function()
-			local autopairs = require("nvim-autopairs")
-			autopairs.setup({
+			require("nvim-autopairs").setup({
 				check_ts = true,
 				disable_filetype = { "TelescopePrompt", "spectre_panel" },
 				ts_config = {
@@ -73,6 +88,7 @@ return {
 			})
 		end,
 	},
+
 	{
 		"mfussenegger/nvim-lint",
 		enabled = false,
@@ -87,6 +103,7 @@ return {
 			}
 
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 				group = lint_augroup,
 				callback = function()
