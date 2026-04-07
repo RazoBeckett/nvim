@@ -274,6 +274,7 @@ return {
 	{
 		dir = "/home/razobeckett/Developer/personal/spoclient.nvim",
 		name = "spoclient.nvim",
+		enabled = false,
 		config = function()
 			require("spotify").setup({
 				clientId = "cdf07ff3f98e4d19b2c49f14c1d78873",
